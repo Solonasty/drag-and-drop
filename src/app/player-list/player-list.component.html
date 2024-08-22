@@ -1,0 +1,39 @@
+<div cdkDropListGroup class="wrap">
+  <div class="drag-container">
+    <div
+      cdkDropList
+      [cdkDropListData]="done"
+      class="drag-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="drag-box" *ngFor="let item of done" cdkDrag>
+        <img [src]="item.photoUrl" alt="{{ item.firstName }} {{ item.lastName }}" class="player-photo">
+        <div class="player-info">
+          <span class="player-number">{{ item.number }}</span>
+          <span class="player-name">{{ item.firstName }} {{ item.lastName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <ng-container *ngFor="let list of grid; let i = index">
+      <div class="drop-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="list"
+          class="drop-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="drop-box" *ngFor="let item of list" cdkDrag>
+            <img [src]="item.photoUrl" alt="{{ item.firstName }} {{ item.lastName }}" class="player-photo">
+            <div class="player-info">
+              <span class="player-number">{{ item.number }}</span>
+              <span class="player-name">{{ item.firstName }} {{ item.lastName }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
